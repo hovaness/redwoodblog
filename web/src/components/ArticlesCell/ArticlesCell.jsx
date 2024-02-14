@@ -1,3 +1,5 @@
+import { Link, routes } from '@redwoodjs/router'
+
 export const QUERY = gql`
   query ArticlesQuery {
     articles: posts {
@@ -23,10 +25,12 @@ export const Success = ({ articles }) => {
       {articles.map((article) => (
         <article key={article.id}>
           <header>
-            <h2>{article.title}</h2>
+            <h2>
+                <Link to={routes.article({id:article.id})}>{article.title}</Link>
+            </h2>
           </header>
           <p>{article.body}</p>
-          <div>Posted at: {article.createdAt}</div>
+          <div>Опубликовано: {article.createdAt}</div>
         </article>
       ))}
     </>
